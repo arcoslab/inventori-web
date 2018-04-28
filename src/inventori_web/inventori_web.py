@@ -3,6 +3,7 @@
 """Main module."""
 
 from flask import Flask
+from flask_migrate import Migrate
 from .database import db
 from .config import DevConfig
 
@@ -20,5 +21,6 @@ def create_app(config_object=DevConfig):
 
     # Init the migration modules
     # TODO: Makes sure this works
+    migrate = Migrate(app, db)
 
     return app
